@@ -16,9 +16,6 @@ import os
 
 
 
-import geopandas as gpd
-
-
 #To evaluate lineEdit is None
 def is_none(text,messenger):
     
