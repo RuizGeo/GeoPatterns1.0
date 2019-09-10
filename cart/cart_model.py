@@ -211,6 +211,7 @@ def cartModel(bar,path_train,segs_path,\
             #classificar segmentacao
             f_txt.write('############# Best Parameters #############'+'\n')
             f_txt.write('Data set: '+best_parameters['Dataset']+' - '+'MinSam: '+str(best_parameters['MinSam'])+ ' - Depth:'+str(best_parameters['Depth'])+'\n')
+            tree.export_graphviz(path_assess_filereplace('.shp','.dot')
             ###################### classify best case##############################
             if eval(stateCheckBox) :
                 #Ler segmentacoes
