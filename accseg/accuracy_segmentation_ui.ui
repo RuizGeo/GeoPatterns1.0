@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>530</width>
+    <height>260</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>530</width>
+    <height>260</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Accuracy of the segmentation</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>511</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="9" column="3">
+     <widget class="QPushButton" name="buttonTextAss">
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="0">
+     <widget class="QPushButton" name="buttonCancel">
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="4">
+     <widget class="QLabel" name="labelRefDat">
+      <property name="text">
+       <string>Reference data (polygon)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0" colspan="3">
+     <widget class="QLabel" name="labelTextAss">
+      <property name="text">
+       <string>Text assessment </string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0" colspan="4">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="6" column="0" colspan="3">
+     <widget class="QLabel" name="labelSegs">
+      <property name="text">
+       <string>Segmentation (polygon)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="3">
+     <widget class="QPushButton" name="buttonSegs">
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="3">
+     <widget class="QLineEdit" name="lineEditSegs"/>
+    </item>
+    <item row="12" column="0" colspan="4">
+     <widget class="QProgressBar" name="progressBar">
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="3">
+     <widget class="QPushButton" name="buttonRun">
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0" colspan="3">
+     <widget class="QLineEdit" name="lineEditTextAss"/>
+    </item>
+    <item row="3" column="0" colspan="4">
+     <widget class="QComboBox" name="comboBoxRefDat"/>
+    </item>
+    <item row="11" column="1" colspan="2">
+     <widget class="QLabel" name="labelOut">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
