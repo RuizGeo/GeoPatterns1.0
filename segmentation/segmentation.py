@@ -226,7 +226,8 @@ class Segmentation:
             self.dlg.ui.spinBoxStartMcells.valueChanged.disconnect(self.value_changed_start_Mcells)
             self.dlg.ui.spinBoxEndMcells.valueChanged.disconnect(self.value_changed_end_Mcells)
             self.dlg.ui.spinBoxStepMcells.valueChanged.disconnect(self.value_changed_step_Mcells)
-            #self.dlg.ui.comboBoxRaster.currentIndexChanged.disconnect(self.value_changed_raster) 
+            self.dlg.ui.comboBoxRaster.currentIndexChanged.disconnect() 
+            
         except:
             pass
         # Do something useful here - delete the line containing pass and
