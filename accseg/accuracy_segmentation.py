@@ -192,6 +192,14 @@ class AccSeg:
 
     def run(self):
         """Run method that performs all the real work"""
+        #try disconect
+        try:            
+            self.dlg.ui.buttonSegs.clicked.disconnect(self.set_path_segs)
+            self.dlg.ui.buttonTextAss.clicked.disconnect(self.set_path_text)
+            self.dlg.ui.buttonCancel.clicked.disconnect(self.cancel_GUI)
+            self.dlg.ui.buttonRun.clicked.disconnect(self.run_accsegs)
+        except:
+            pass
         #Clear GUI
         self.dlg.ui.lineEditSegs.clear()
         self.dlg.ui.lineEditTextAss.clear()
