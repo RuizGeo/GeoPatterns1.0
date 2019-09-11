@@ -78,7 +78,12 @@ class CART:
         #Get plugin path
         self.plugin_path= QgsApplication.qgisSettingsDirPath()+'python/plugins/cart/'
         #Append path packages#
-        sys.path.append(self.plugin_path)
+        #Append packages path in sys
+        if self.dlg.ui.lineEditPackPath.text()=='':
+            pass
+        else:
+            
+            sys.path.append(self.dlg.ui.lineEditPackPath.text())
         # Create the dialog (after translation) and keep reference
         self.dlg = cartDialog()
 
