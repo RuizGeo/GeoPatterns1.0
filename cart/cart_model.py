@@ -98,7 +98,7 @@ def cartModel(bar,path_train,segs_path,\
             #segmentations file
             for i_n, seg in enumerate (segs_names): 
                 #ProgressaBar
-                bar.setValue((i_n/float(len_segs))*100)
+                bar.setValue(((i_n+1)/float(len_segs))*100)
                 #Selecionar arquivos .shp          
                 #f_txt.write(segs_path+os.sep+seg+'\n')
                 print (segs_path+os.sep+seg)
