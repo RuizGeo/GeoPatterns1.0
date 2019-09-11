@@ -211,7 +211,8 @@ def cartModel(bar,path_train,segs_path,\
             #classificar segmentacao
             f_txt.write('############# Best Parameters #############'+'\n')
             f_txt.write('Data set: '+best_parameters['Dataset']+' - '+'MinSam: '+str(best_parameters['MinSam'])+ ' - Depth:'+str(best_parameters['Depth'])+'\n')
-            tree.export_graphviz(path_assess_file.replace('.shp','.dot'))
+            out_tree=path_assess_file.replace('.txt','.dot')
+            tree.export_graphviz(modelTree,out_tree)
             ###################### classify best case##############################
             if eval(stateCheckBox) :
                 #Ler segmentacoes
@@ -260,7 +261,7 @@ def cartModel(bar,path_train,segs_path,\
                     DFtoSHP(segs_path+os.sep+best_parameters['Dataset'],model_path, df_dataset)
                     #df_dataset[['geometry','classes']].to_file( model_path)
                     f_txt.write('############# Confusion Matrix #############'+'\n')
-                    f_txt.write(str(matrix)+'\n')
+                    f_txt.write(str(matrix.T)+'\n')
                 else:
                     #Create CART Regressor
                     clf = tree.DecisionTreeRegressor( criterion=criterion_split, max_depth =best_parameters['Depth'], min_samples_split =best_parameters['MinSam'] )
