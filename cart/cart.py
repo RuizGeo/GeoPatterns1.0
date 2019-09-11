@@ -203,7 +203,18 @@ class CART:
 
     def run(self):
         """Run method"""
-        
+        try:
+            #disconnect       
+            self.dlg.ui.buttonAssessFile.clicked.disconnect(self.set_assess_file)
+            self.dlg.ui.buttonDataSet.clicked.disconnect(self.set_data_set)
+            self.dlg.ui.buttonCancel.clicked.disconnect(self.cancel_GUI)
+            self.dlg.ui.buttonRun.clicked.disconnect(self.run_model)
+            self.dlg.ui.comboBoxTrain.currentIndexChanged.disconnect(self.value_changed_train)
+            self.dlg.ui.comboBoxVal.currentIndexChanged.disconnect(self.value_changed_val)
+            self.dlg.ui.checkBoxApplyModel.stateChanged.disconnect(self.state_changed_apply_model)
+            self.dlg.ui.buttonOutModel.clicked.disconnect(self.set_model_path)
+        except:
+            pass
         #Get plugin path
         self.plugin_path= QgsApplication.qgisSettingsDirPath()+'python/plugins/cart'
         #TabInput visble
