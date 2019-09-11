@@ -194,6 +194,14 @@ class Sampling:
     
     def run(self):
         """Run method that performs all the real work"""
+        #try disconnect
+        try:
+            self.dlg.ui.buttonInRast.clicked.disconnect(self.set_path_rasters)
+            self.dlg.ui.buttonInVec.clicked.disconnect(self.set_path_vectors)
+            self.dlg.ui.buttonCancel.clicked.disconnect(self.cancel_GUI)
+            self.dlg.ui.buttonRun.clicked.disconnect(self.run_sampling)
+        except:
+            pass
         #Clear GUI
         self.dlg.ui.lineEditInRast.clear()
         self.dlg.ui.lineEditVec.clear()
