@@ -211,7 +211,24 @@ class Segmentation:
         
         """Run method that performs all the real work"""
 
-        
+        #try disconnect
+        try:
+            #Connect functions
+            self.dlg.ui.buttonPathSegs.clicked.disconnect(self.set_path_segs)
+            self.dlg.ui.buttonCancel.clicked.disconnect(self.cancel_GUI)
+            self.dlg.ui.buttonRun.clicked.connect(self.run_segmentation)
+            
+            #Connect functions value changedspinBox
+            self.dlg.ui.spinBoxStarSim.valueChanged.disconnect(self.value_changed_start_sim)
+            self.dlg.ui.spinBoxEndSim.valueChanged.disconnect(self.value_changed_end_sim)
+            self.dlg.ui.spinBoxStepSim.valueChanged.disconnect(self.value_changed_step_sim)
+            #self.dlg.ui.spinBoxStepSim.valueChanged.connect(self.value_changed_step_sim)
+            self.dlg.ui.spinBoxStartMcells.valueChanged.disconnect(self.value_changed_start_Mcells)
+            self.dlg.ui.spinBoxEndMcells.valueChanged.disconnect(self.value_changed_end_Mcells)
+            self.dlg.ui.spinBoxStepMcells.valueChanged.disconnect(self.value_changed_step_Mcells)
+            #self.dlg.ui.comboBoxRaster.currentIndexChanged.disconnect(self.value_changed_raster) 
+        except:
+            pass
         # Do something useful here - delete the line containing pass and
         # substitute with your code.
         #TabInput visble
