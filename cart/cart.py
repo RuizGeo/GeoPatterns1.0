@@ -293,7 +293,7 @@ class CART:
             self.dlg.ui.comboBoxVal.addItem('None') 
             self.dlg.ui.comboBoxFieldVal.addItem('None')
         else:
-            #Get name layer
+            #Get name layerint(step_k)
             names_fields=self.dlg.ui.comboBoxVal.currentText() 
             self.dlg.ui.comboBoxFieldVal.addItems(self.fields[names_fields])
 
