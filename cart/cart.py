@@ -635,7 +635,7 @@ class CART:
             
 
             #progressbar
-            self.dlg.ui.progressBar.setValue(100)
+            self.dlg.ui.progressBar.setValue(50)
 
             #Run Assess RFC
             cartModel(self.dlg.ui.progressBar,path_train,dataset_path,\
