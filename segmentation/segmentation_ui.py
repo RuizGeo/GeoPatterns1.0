@@ -20,7 +20,7 @@ class Ui_Dialog(object):
         Dialog.setSizePolicy(sizePolicy)
         Dialog.setMaximumSize(QtCore.QSize(581, 259))
         Dialog.setSizeGripEnabled(False)
-        Dialog.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint)
+        #Dialog.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint)
         self.tabWidget = QtWidgets.QTabWidget(Dialog)
         self.tabWidget.setGeometry(QtCore.QRect(2, 9, 571, 241))
         self.tabWidget.setObjectName("tabWidget")
