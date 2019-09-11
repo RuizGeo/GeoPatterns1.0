@@ -77,6 +77,8 @@ class CART:
                 QCoreApplication.installTranslator(self.translator)
         #Get plugin path
         self.plugin_path= QgsApplication.qgisSettingsDirPath()+'python/plugins/cart/'
+
+        self.dlg = cartDialog()
         #Append path packages#
         #Append packages path in sys
         if self.dlg.ui.lineEditPackPath.text()=='':
@@ -85,8 +87,6 @@ class CART:
             
             sys.path.append(self.dlg.ui.lineEditPackPath.text())
         # Create the dialog (after translation) and keep reference
-        self.dlg = cartDialog()
-
         # Declare instance attributes
         self.actions = []
         self.menu = self.tr(u'&GeoPatterns')
