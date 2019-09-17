@@ -34,7 +34,7 @@ import sys
 # Initialize Qt resources from file resources.py
 from .resources import *
 # Import the code for the dialog
-from .NB_dialog import NBDialog
+from .nb_dialog import NBDialog
 import os.path
 from .NBC import model_NB
 from .to_evaluate import is_none, is_defined, exist_file,\
