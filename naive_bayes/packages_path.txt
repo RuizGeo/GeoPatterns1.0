@@ -1,1 +1,0 @@
-/root/anaconda3/envs/geov/lib/python3.6/site-packages/
