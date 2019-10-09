@@ -45,12 +45,12 @@ def cartModel(bar,path_train,segs_path,\
                 #Geodata mining
                 import pandas as pd
                 global pd
-                import rtree
+                #import rtree
                 print('Import pandas')
             except:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Information)
-                msg.setText("Error import pandas or rtree")
+                msg.setText("Error import pandas")
                 msg.setWindowTitle("Info")
                 msg.exec_() 
                 return 0
