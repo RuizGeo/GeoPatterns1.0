@@ -183,7 +183,7 @@ class NB:
         icon_path = ':/plugins/naive_bayes/icon.png'
         self.add_action(
             icon_path,
-            text=self.tr(u'k-NN'),
+            text=self.tr(u'Naive Bayes'),
             callback=self.run,
             parent=self.iface.mainWindow())
 
@@ -192,7 +192,7 @@ class NB:
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
             self.iface.removePluginMenu(
-                self.tr(u'&k-NN'),
+                self.tr(u'&Naive Bayes'),
                 action)
             self.iface.removeToolBarIcon(action)
         # remove the toolbar
