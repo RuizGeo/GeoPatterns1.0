@@ -73,10 +73,10 @@ class AccSeg:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&Accuracy of the segmentation')
+        self.menu = self.tr(u'&GeoPatterns')
         # TODO: We are going to let the user set this up in a future iteration
-        self.toolbar = self.iface.addToolBar(u'AccSeg')
-        self.toolbar.setObjectName(u'AccSeg')
+        self.toolbar = self.iface.addToolBar(u'Accuracy of the segmentation')
+        self.toolbar.setObjectName(u'Accuracy of the segmentation')
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
