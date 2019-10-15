@@ -6,7 +6,7 @@ Dependencies:
 - Open OsGeo shell as administrator:
 
 ```python
->>> py3_env.bat
->>> pip install scikit-learn
->>> pip install pandas
+> py3_env.bat
+> pip install scikit-learn
+> pip install pandas
 ```
