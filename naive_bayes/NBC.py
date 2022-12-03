@@ -307,8 +307,10 @@ def createDF(dataset):
     fields.append('idxs')
     #Concatenar and create DataFrame
     df=pd.DataFrame(np.concatenate((datas, idxs), axis=1), columns=fields)
+    #remove NULL
+    df[df==NULL] = np.nan
     #return
-    print(df.isna().sum())
+    #print(df.isna().sum())
     return df#.replace(NULL,np.nan)
 
 def createSampleDF(dataset,sample,field_class):
@@ -362,8 +364,10 @@ def createSampleDF(dataset,sample,field_class):
     fields.append(field_class)
     #Concatenar and create DataFrame
     df=pd.DataFrame(np.concatenate((datas, classes), axis=1), columns=fields)
+    #Remove NULL
+    df[df==NULL] = np.nan
     #return
-    return df.replace(NULL,np.nan)        
+    return df#.replace(NULL,np.nan)        
 
 def pontius2011(labels_validation,classifier):
         #get class
