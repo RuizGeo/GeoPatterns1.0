@@ -7,6 +7,7 @@ Dependencies:
 
 ```python
 > py3_env.bat
+> pip install ogr
 > pip install scikit-learn
 > pip install pandas
 ```
