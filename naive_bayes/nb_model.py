@@ -346,8 +346,10 @@ def createDF(dataset):
     fields.append('idxs')
     #Concatenar and create DataFrame
     df=pd.DataFrame(np.concatenate((datas, idxs), axis=1), columns=fields)
+    #Remove NULL
+    df[df==NULL] = np.nan
     #return
-    return df.replace(NULL,np.nan)
+    return df#.replace(NULL,np.nan)
 
 def createSampleDF(dataset,sample,field_class):
 
@@ -400,8 +402,10 @@ def createSampleDF(dataset,sample,field_class):
     fields.append(field_class)
     #Concatenar and create DataFrame
     df=pd.DataFrame(np.concatenate((datas, classes), axis=1), columns=fields)
+    #Remove NULL
+    df[df==NULL] = np.nan
     #return
-    return df.replace(NULL,np.nan)
+    return df#.replace(NULL,np.nan)
 
 
     
