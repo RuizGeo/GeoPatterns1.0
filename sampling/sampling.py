@@ -26,6 +26,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from qgis.core import *
+from qgis.analysis import QgsZonalStatistics
 import numpy as np
 import os
 import sys
@@ -262,51 +263,54 @@ class Sampling:
             stats=[]
             if self.dlg.ui.checkBoxSum.checkState():
                 #Append statistics
-                stats.append(1)
+                stats.append('QgsZonalStatistics.Sum')
                 
             if self.dlg.ui.checkBoxMean.checkState():
                 #Append statistics
-                stats.append(2)
+                stats.append('QgsZonalStatistics.Mean')
                 
             if self.dlg.ui.checkBoxMedian.checkState():
                 #Append statistics
-                stats.append(3)
+                stats.append('QgsZonalStatistics.Median')
                 
             if self.dlg.ui.checkBoxSTD.checkState():
                 #Append statistics
-                stats.append(4)
+                stats.append('QgsZonalStatistics.StDev')
                 
             if self.dlg.ui.checkBoxMin.checkState():
                 #Append statistics
-                stats.append(5)
+                stats.append('QgsZonalStatistics.Min')
                 
             if self.dlg.ui.checkBoxMax.checkState():
                 #Append statistics
-                stats.append(6)
+                stats.append('QgsZonalStatistics.Max')
                 
             if self.dlg.ui.checkBoxRange.checkState():
                 #Append statistics
-                stats.append(7)
+                stats.append('QgsZonalStatistics.Range')
                 
             if self.dlg.ui.checkBoxMinor.checkState():
                 #Append statistics
-                stats.append(8)
+                stats.append('QgsZonalStatistics.Minority')
                 
             if self.dlg.ui.checkBoxMajor.checkState():
                 #Append statistics
-                stats.append(9)
+                stats.append('QgsZonalStatistics.Majority')
                 
             if self.dlg.ui.checkBoxVariety.checkState():
                 #Append statistics
-                stats.append(10)
+                stats.append('QgsZonalStatistics.Variety')
             #stattistics 
             if list_is_empty(stats,"Parameters: Select statistics"):
                 return 0 
             #Set lineEdit Out
-            self.dlg.ui.textEditOut.setText('Statistics')
-            self.dlg.ui.textEditOut.append('Sum: 1 - Mean: 2 - Median: 3 - StedDev: 4 - Min: 5')
-            self.dlg.ui.textEditOut.append('Max: 6 - Range: 7 - Minority: 8 - Majority: 9 - Variety: 10')
-            
+            #self.dlg.ui.textEditOut.setText('Statistics')
+            #self.dlg.ui.textEditOut.append('Sum: 1 - Mean: 2 - Median: 3 - StedDev: 4 - Min: 5')
+            if len(stats)>1:
+                        str_stats = '|'.join(stats)
+            else:
+                        str_stats = stats[0]
+                  
             print ('Stats: ',stats)
             #Get files paths
             rasters_path=self.dlg.ui.lineEditInRast.text()
@@ -372,16 +376,20 @@ class Sampling:
             for vec in vectors_files:
                 #Set lineEdi Out
                 self.dlg.ui.textEditOut.append(vec)
+                vector = QgsVectorLayer(vec, 'vector', 'ogr')
                 #Loop about rasters files
                 for rast in rasters_files:
-                    #raster = QgsRasterLayer(rast, 'raster')
+                    raster = QgsRasterLayer(rast, 'raster')
                     column = rast.split(os.sep)[-1].split('.')[0]
                     #Get parameters
-                    parameters = {'INPUT_RASTER':rast,'RASTER_BAND':1,'INPUT_VECTOR':vec,\
-                                  'COLUMN_PREFIX':column,\
-                                  'STATS':stats}
+                    #parameters = {'INPUT_RASTER':rast,'RASTER_BAND':1,'INPUT_VECTOR':vec,\
+                    #              'COLUMN_PREFIX':column,\
+                    #             'STATS':stats}
                     #Run algortms
-                    processing.run('qgis:zonalstatistics',parameters)
+                    #processing.run('qgis:zonalstatistics',parameters)
+                    print('Stats: ',str_stats)
+                    analysis = QgsZonalStatistics(vector, raster, column, 1, eval(str_stats))
+                    result = analysis.calculateStatistics(None)
                     #Set lineEdi Out
                     self.dlg.ui.textEditOut.append(column)
                 #set value progressBar
