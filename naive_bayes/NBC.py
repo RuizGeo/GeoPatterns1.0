@@ -35,7 +35,7 @@ vector_is_readable,is_crs,is_join
 
 def model_NB(bar,path_train,dataset_path,\
                                path_val,field_class_train,\
-                               field_class_val,a_priori,\
+                               field_class_val,\
                                state_applyclass,assess_text_path,classification_path):
         try:        
             #Geodata mining
@@ -70,7 +70,7 @@ def model_NB(bar,path_train,dataset_path,\
         #create text
         f_txt=open(assess_text_path,'w')  
         #Write 
-        f_txt.write('Dataset;Priori;kappa'+'\n')
+        f_txt.write('Dataset;kappa'+'\n')
         #get dataframe training samples
         #dft=gpd.read_file(path_train)
         train=QgsVectorLayer(path_train, 'train', 'ogr')
@@ -142,23 +142,23 @@ def model_NB(bar,path_train,dataset_path,\
             if is_join(dfjv.shape,'Data set and validation samples do not overlap or contains NaN') == False:
                 return 0    
             #a priori prob
-            freq=np.bincount(dfjt[field_class_train])
-            freqs=freq/freq.sum()
-            uniq=np.unique(dfjt[field_class_train])
+            #freq=np.bincount(dfjt[field_class_train])
+            #freqs=freq/freq.sum()
+            #uniq=np.unique(dfjt[field_class_train])
             #apriori
-            dic_a_priori={'False':None,'True':freqs[uniq]}
+            #dic_a_priori={'False':None,'True':freqs[uniq]}
             #criar model NB
-            clf = GaussianNB(priors=dic_a_priori[a_priori] )
+            clf = GaussianNB()#(priors=dic_a_priori[a_priori] )
             #Ajustar modelo
-            modelNB = clf.fit(dfjt[features].values, dfjt[field_class_train])
+            modelNB = clf.fit(dfjt[features].values, dfjt[field_class_train].astype(np.int64))
             #Classificar
             clas = modelNB.predict(dfjv[features].values)
             #Calculate kappa
-            kappa = metrics.cohen_kappa_score(dfjv[field_class_val],clas)                   
+            kappa = metrics.cohen_kappa_score(dfjv[field_class_val].values.astype(np.int64),clas)                   
             #Calculate PC
             #pc,qd,qa,matrix=pontius2011(dfjv[field_class_val],clas)
             #print (pc,qd,qa)
-            f_txt.write(seg+';'+a_priori+';'+str(round(kappa,4))+'\n') 
+            f_txt.write(seg+';'+';'+str(round(kappa,4))+'\n') 
             #Avaliar a acuracia
             
             if kappa > acuracia:
@@ -183,20 +183,20 @@ def model_NB(bar,path_train,dataset_path,\
             #dfjt=gpd.sjoin(dft,df_dataset,how="inner", op='intersects')
             dfjt=createSampleDF(dataset_path+os.sep+best_parameters['dataset'],path_train,field_class_train)
             #a priori prob
-            freq=np.bincount(dfjt[field_class_train])
-            freqs=freq/freq.sum()
-            uniq=np.unique(dfjt[field_class_train])
+            #freq=np.bincount(dfjt[field_class_train])
+            #freqs=freq/freq.sum()
+            #uniq=np.unique(dfjt[field_class_train])
             #apriori
-            dic_a_priori={'False':None,'True':freqs[uniq]}
+            #dic_a_priori={'False':None,'True':freqs[uniq]}
             #criar model NB
-            clf = GaussianNB(priors=dic_a_priori[a_priori] )            #criar modelo KNN
+            clf = GaussianNB()#priors=dic_a_priori[a_priori] )            
             
             #Ajustar modelo
-            model = clf.fit(dfjt[features].values, dfjt[field_class_train])
+            model = clf.fit(dfjt[features].values, dfjt[field_class_train].astype(np.int64))
             #Classificar
             clas = model.predict(dfjv[features].values)     
             #Calculate confusion matrix
-            matrix=metrics.confusion_matrix(dfjv[field_class_val],clas)                 
+            matrix=metrics.confusion_matrix(dfjv[field_class_val].values.astype(np.int64),clas.astype(np.int64))                 
             #Calculate PC
             #pc,qd,qa,matrix=pontius2011(dfjv[field_class_val],clas)
             #Remove NaN dat5aset
@@ -264,7 +264,7 @@ def DFtoSHP(shp_input, shp_out, dataframe):
     fields = QgsFields()
     fields.append(QgsField('target', QVariant.Double, 'double', 20, 3))
     #writer shapefiles
-    writer = QgsVectorFileWriter(shp_out, "utf-8", fields, ogr.wkbPolygon, layer.crs(), "ESRI Shapefile")
+    writer = QgsVectorFileWriter(shp_out, "utf-8", fields, QgsWkbTypes.MultiPolygon,layer.crs(), "ESRI Shapefile")
    
     # add a feature
     fet = QgsFeature()
