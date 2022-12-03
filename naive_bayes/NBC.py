@@ -308,7 +308,8 @@ def createDF(dataset):
     #Concatenar and create DataFrame
     df=pd.DataFrame(np.concatenate((datas, idxs), axis=1), columns=fields)
     #return
-    return df.replace(NULL,np.nan)
+    print(df.isna().sum())
+    return df#.replace(NULL,np.nan)
 
 def createSampleDF(dataset,sample,field_class):
 
