@@ -136,9 +136,9 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Sampling - Zonal Statistics"))
         self.buttonInRast.setText(_translate("Dialog", "..."))
-        self.labelRast.setText(_translate("Dialog", "Rasters path"))
+        self.labelRast.setText(_translate("Dialog", "Features path (Rasters)"))
         self.buttonInVec.setText(_translate("Dialog", "..."))
-        self.labelVec.setText(_translate("Dialog", "Vectors path (Polygon)"))
+        self.labelVec.setText(_translate("Dialog", "Segmentations path (vectors)"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabInput), _translate("Dialog", "Input"))
         self.groupBox.setTitle(_translate("Dialog", "Statistics"))
         self.checkBoxSum.setText(_translate("Dialog", "Sum"))
