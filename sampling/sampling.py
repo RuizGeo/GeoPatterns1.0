@@ -374,6 +374,7 @@ class Sampling:
             totale = len(vectors_files)
             #Loop about vectors_files
             for vec in vectors_files:
+                print('Vector layer: ',vec)
                 #Set lineEdi Out
                 self.dlg.ui.textEditOut.append(vec)
                 vector = QgsVectorLayer(vec, 'vector', 'ogr')
@@ -387,6 +388,7 @@ class Sampling:
                     #             'STATS':stats}
                     #Run algortms
                     #processing.run('qgis:zonalstatistics',parameters)
+                    
                     print('Stats: ',str_stats)
                     analysis = QgsZonalStatistics(vector, raster, column, 1, eval(str_stats))
                     result = analysis.calculateStatistics(None)
