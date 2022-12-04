@@ -228,11 +228,12 @@ class NB:
         self.dlg.ui.lineEditOutClass.clear()
         self.dlg.ui.lineEditAssessFile.clear()
         #SetCheckState
-        self.dlg.ui.checkBoxApplyClas.setCheckState(False)
+        self.dlg.ui.checkBoxApplyClas.setCheckState(True)
+        self.dlg.ui.checkBoxApplyClas.setEnabled(False)
 
         #enable
-        self.dlg.ui.lineEditOutClass.setEnabled(False)
-        self.dlg.ui.buttonOutClass.setEnabled(False)
+        self.dlg.ui.lineEditOutClass.setEnabled(True)
+        self.dlg.ui.buttonOutClass.setEnabled(True)
         #Zero progressaBar
         self.dlg.ui.progressBar.setValue(0)
         #Set criterions Split comboBoxPriori
