@@ -518,7 +518,7 @@ class Segmentation:
                                 processing.run('gdal:polygonize', parameters_shp)
                                
                                 #set value progressBar
-                                self.dlg.ui.progressBar.setValue((float(count)/size_param)*100)
+                                self.dlg.ui.progressBar.setValue(100.0)#(float(count)/size_param)*100)
                                 count +=1
                             except:
                                 msg = QMessageBox()
