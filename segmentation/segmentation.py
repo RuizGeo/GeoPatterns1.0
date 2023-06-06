@@ -462,7 +462,7 @@ class Segmentation:
                     #somar loop
                     count=1
                     #set value progressBar
-                    self.dlg.ui.progressBar.setValue(1.0)
+                    self.dlg.ui.progressBar.setValue(1)
                     #size != []
                     similarity_calculatiom=np.arange(start_sim,end_sim,step_sim)
                  
@@ -518,7 +518,7 @@ class Segmentation:
                                 processing.run('gdal:polygonize', parameters_shp)
                                
                                 #set value progressBar
-                                self.dlg.ui.progressBar.setValue(100.0)#(float(count)/size_param)*100)
+                                self.dlg.ui.progressBar.setValue(int(float(count)/size_param)*100))
                                 count +=1
                             except:
                                 msg = QMessageBox()
