@@ -13,6 +13,7 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.setEnabled(True)
         Dialog.resize(530, 260)
+        Dialog.setWindowFlags(QtCore.Qt.WindowMinMaxButtonsHint)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
